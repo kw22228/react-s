@@ -10,8 +10,7 @@
 태그를 정해주지않고 감싸주기만 하면서 나타내지않음.
 <React.Fregment>  ===  <>
 
-<pre>
-<code>
+```javascript
 const Paint = ( {title, description, children} ) => (
 	<>
 	    <h1>{title}</h1>
@@ -19,8 +18,7 @@ const Paint = ( {title, description, children} ) => (
 	    {children}
 	</>
 );
-</code>
-</pre>
+```
 
 {title, description, children} ==> const customH1 = <h1 {...props} />;
 두개의 구조가 같다. 즉, props를 다시 받아주는것.
