@@ -1,2 +1,2 @@
 # react-study
-react 공부용.
+react 공부
