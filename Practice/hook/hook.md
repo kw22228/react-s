@@ -2,6 +2,7 @@
 
 ### useState
 - React안에 제공되는 useState 훅
+- 컴포넌트의 상태를 관리함.
 - 훅을 사용하게 될 경우 render를 다시 안해줘도 엘리먼트가 업데이트됨.
 
 ```javascript
