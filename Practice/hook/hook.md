@@ -17,6 +17,11 @@ const [keyword, setKeyword] = React.useState(() => {
     return window.localStorage.getItem("keyword");
 });
 ```
+
+- useState는 전에 있던 값을 받아온다. (prev)
+```javascript
+setShow( prev => !prev )
+```
 - - -
 ### useEffect
 - 훅을 사용하여 부수적으로 자신이 원하는 조건에 함수를 실행시킬 수 있다.
@@ -31,6 +36,18 @@ React.useEffect(() => {
 - depandency array가 없을 시, 모든 변화에 함수를 적용한다.
 - depandency array가 [] 일 때, 처음 로드후에 한번만 적용한다.
 
+#### useEffect Cleanup
+- useEffect에 이미 등록이 되어있으면 그값을 Cleanup한 후 useEffect실행
+
+```javascript
+React.useEffect(() => {
+    console.log("App useEffect, show deps")
+
+    return () => {
+        console.log("App useEffect [Cleanup], show deps")
+    }
+}, [show]);
+```
 - - - 
 ### customHook
 - 반복되는 훅들이 있으면 함수로 모아서 만든다.
@@ -48,3 +65,16 @@ const useLocalStorage = (itemName, value = "") => {
     return [state, setState];
 };
 ```
+
+- - -
+### hook flow
+App Render(App useState) -> Child Render(App useState) -> Child useEffect -> App useEffect   
+
+- useEffect
+Render가 끝난뒤에 실행된다. (children이 먼저 다 실행후 App이 실행)
+
+- update시
+useEffect Cleanup 실행 후 useEffect가 실행
+
+
+
