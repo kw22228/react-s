@@ -43,7 +43,7 @@ React.useEffect(() => {
 React.useEffect(() => {
     console.log("App useEffect, show deps")
 
-    return () => {
+    return () => { //useEffect Cleanup
         console.log("App useEffect [Cleanup], show deps")
     }
 }, [show]);
@@ -70,10 +70,10 @@ const useLocalStorage = (itemName, value = "") => {
 ### hook flow
 App Render(App useState) -> Child Render(App useState) -> Child useEffect -> App useEffect   
 
-- useEffect
+- useEffect   
 Render가 끝난뒤에 실행된다. (children이 먼저 다 실행후 App이 실행)
 
-- update시
+- update시   
 useEffect Cleanup 실행 후 useEffect가 실행
 
 
