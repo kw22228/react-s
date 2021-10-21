@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const App = () => {
+        const inputRef = React.useRef();
+        const styleRef = React.useRef();
+        React.useEffect(() => {
+            inputRef.current.focus();
+
+            setTimeout(() => {
+                styleRef.current.style.backgroundColor = 'pink';
+            }, 1000);
+            //document.getElementById('input1').focus();
+        }, [])
+
+        return (
+            <>
+              <input ref={inputRef}/>
+              <div 
+                ref={styleRef} 
+                style={{width:300, height:100, backgroundColor:'brown'}}
+              />
+            </>
+        )
+      };
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
