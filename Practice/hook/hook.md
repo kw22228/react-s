@@ -68,6 +68,39 @@ const useLocalStorage = (itemName, value = "") => {
 ```
 
 - - -
+### useRef
+- useRef를 사용하여 DOM안의 element를 조작할 수 있다.
+
+```javascript
+const App = () => {
+    const inputRef = React.useRef();
+    const styleRef = React.useRef();
+    React.useEffect(() => {
+        inputRef.current.focus();
+
+        setTimeout(() => {
+            styleRef.current.style.backgroundColor = 'pink';
+        }, 1000);
+
+        //document.getElementById('input1').focus();
+    }, [])
+
+    return (
+        <>
+            <input ref={inputRef}/>
+            <div 
+                ref={styleRef} 
+                style={{width:300, height:100, backgroundColor:'brown'}}
+            />
+        </>
+    )
+};
+```
+#### document.getElementById()로 조작할 수 있는데 왜?
+react가 만들어낸 DOM에서 직접 DOM API를 사용하여 element를 만지게되면 비효율적이게 될 수 있다.      
+따라서 React에서 제공하는 hook을 사용하여 element를 조작하는게 효율적.
+
+- - -
 ### hook flow
 App Render(App useState) -> Child Render(App useState) -> Child useEffect -> App useEffect   
 
