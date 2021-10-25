@@ -9,14 +9,46 @@
     <div id="root"></div>
     <script type="text/babel">
       const todos = [
-          {id: 1, value: "Wash dishes"},
-          {id: 2, value: "Clean the bad"},
-          {id: 3, value: "Running"},
-          {id: 4, value: "Learning"}
+          [
+            {id: 1, value: "Wash dishes"},
+            {id: 2, value: "Clean the bad"},
+            {id: 3, value: "Running"},
+            {id: 4, value: "Learning"}
+          ],
+          [
+            {id: 4, value: "Learning"},
+            {id: 1, value: "Wash dishes"},
+            {id: 2, value: "Clean the bad"},
+            {id: 3, value: "Running"},
+          ],
+          [
+            {id: 3, value: "Running"},
+            {id: 4, value: "Learning"},
+            {id: 1, value: "Wash dishes"},
+            {id: 2, value: "Clean the bad"},
+          ],
+          [
+            {id: 2, value: "Clean the bad"},
+            {id: 3, value: "Running"},
+            {id: 4, value: "Learning"},
+            {id: 1, value: "Wash dishes"},
+          ]
       ];
-
+      
       const App = () => {
-          const [items, setItems] = React.useState(todos);
+          const [items, setItems] = React.useState(todos[0]);
+          
+          React.useEffect(() => {
+              const interval = setInterval(() => {
+                const random = Math.floor(Math.random() * 3)
+
+                setItems(todos[random])
+              }, 1000)
+
+              return () => {
+                  clearInterval(interval);
+              }
+          }, [])
 
           const handleDoneClick = (e) => {
               setItems( (prevItems) => {
@@ -39,15 +71,16 @@
           return (
               <>
                 {
-                    items.map( (e) => {
+                    items.map( (e, i) => {
                         return (
                             <div key={e.id}>
-                                <span>{e.value}</span>
-                                <button onClick={() => handleDoneClick(e)}>Done</button>
+                                <button onClick={() => handleDoneClick(e)}>{e.value}</button>
                             </div>
                         );
                     })
                 }
+                <br />
+                <br />
                 <button onClick={handleRestoreClick}>Restore</button>
               </>
           );
