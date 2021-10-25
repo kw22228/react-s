@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const todos = [
+          {id: 1, value: "Wash dishes"},
+          {id: 2, value: "Clean the bad"},
+          {id: 3, value: "Running"},
+          {id: 4, value: "Learning"}
+      ];
+
+      const App = () => {
+          const [items, setItems] = React.useState(todos);
+
+          const handleDoneClick = (e) => {
+              setItems( (prevItems) => {
+                  return prevItems.filter( (item) => {
+                    return item !== e;
+                  });
+              })
+          };
+          const handleRestoreClick = (e) => {
+              setItems( (prevItems) => {
+                  return [
+                      ...prevItems,
+                      todos.find( (item) => {
+                        return !prevItems.includes(item)
+                      })
+                  ]
+              })
+          }
+
+          return (
+              <>
+                {
+                    items.map( (e) => {
+                        return (
+                            <div key={e.id}>
+                                <span>{e.value}</span>
+                                <button onClick={() => handleDoneClick(e)}>Done</button>
+                            </div>
+                        );
+                    })
+                }
+                <button onClick={handleRestoreClick}>Restore</button>
+              </>
+          );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
