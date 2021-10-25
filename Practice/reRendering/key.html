@@ -71,7 +71,7 @@
           return (
               <>
                 {
-                    items.map( (e, i) => {
+                    items.map( (e, i) => { // map의 i를 key로 쓰면 유일함이 없음.
                         return (
                             <div key={e.id}>
                                 <button onClick={() => handleDoneClick(e)}>{e.value}</button>
