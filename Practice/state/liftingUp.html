@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      const App = () => {
+          const [id, setId] = React.useState("");
+          const [pw, setPw] = React.useState("");
+
+          const eventHDL = {
+              onChange(event, set) {
+                set(event.target.value)
+              },
+              onSubmit(e) {
+                e.preventDefault();
+              }
+          }
+          return (
+              <>
+                <form onSubmit={eventHDL.onSubmit}>
+                    <label htmlFor="id">ID: </label>
+                    <input type="text" id="id" name="id" onChange={() => eventHDL.onChange(event, setId)} />
+                    <br />
+                    <label htmlFor="pw">PW: </label>
+                    <input type="password" id="pw" name="pw" onChange={() => eventHDL.onChange(event, setPw)} />
+                    <br />
+                    <button type="submit" disabled={id.length === 0 || pw.length === 0}>Submit</button>
+                </form>
+              </>
+          );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
