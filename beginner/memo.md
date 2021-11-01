@@ -1,4 +1,4 @@
-# React 
+# 필요 React extension
 
 - - -
 ### react snippet
