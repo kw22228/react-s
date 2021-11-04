@@ -2,7 +2,9 @@
 
 - - -
 ### react snippet
-extension -> "react es7" 검색 -> react snippet 다운 -> rfc(react functional composition) 스니펫 사용 가능.
+extension -> "react es7" 검색 -> react snippet 다운(react functional composition) 스니펫 사용 가능.     
+- rfc => react function 스니펫 만들어줌.
+- rcc => react class 스니펫 만들어줌.
 
 ### ESLint
 
