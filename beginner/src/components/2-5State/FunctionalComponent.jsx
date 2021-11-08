@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-export default function FunctionalComponent() {
+export const FunctionalComponent = () => {
     const [date, setDate] = useState(new Date());
 
     const tick = () => {
