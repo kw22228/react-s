@@ -46,3 +46,13 @@ const UserGreeting = (props) => {
     );
 }
 ```
+
+### List 와 key
+- 반복적인 todoList안에서 명시적으로 key를 줘야한다. (key로 인해서 고유 엘리먼트를 찾을 수 있음.)
+- key를 주지않으면 default로 index로 key를 사용.(즉, map의 index로 key를 줄 시 워닝만 사라지고 똑같음.)
+- key는 props로 넘겨줄 수 없다. (key는 식별만 하기 위한 것.)
+```javascript
+const todoList = todos.map((todo) => {
+    return <Item key={todo.id} {...todo} />; //key값은 props로 받아서 쓸 수 없다.
+})
+```
