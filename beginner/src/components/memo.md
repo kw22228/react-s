@@ -46,7 +46,7 @@ const UserGreeting = (props) => {
     );
 }
 ```
-
+- - -
 ### List 와 key
 - 반복적인 todoList안에서 명시적으로 key를 줘야한다. (key로 인해서 고유 엘리먼트를 찾을 수 있음.)
 - key를 주지않으면 default로 index로 key를 사용.(즉, map의 index로 key를 줄 시 워닝만 사라지고 똑같음.)
@@ -56,3 +56,11 @@ const todoList = todos.map((todo) => {
     return <Item key={todo.id} {...todo} />; //key값은 props로 받아서 쓸 수 없다.
 })
 ```
+
+- - -
+### Form
+- Controlled => (input, select, textarea, ...etc)의 value를 state로 관리한다.
+(이벤트 핸들러에 모든 상태를 입력하고 연결해줘야 하기때문에 귀찮을 수 있음. 이러할 경우 대체 기술인 UnControlled Component 사용.)
+
+- UnControlled => form element자체의 내부 상태 활용
+(useRef를 사용하여 ref= 으로되어있는 element를 contorll함)
