@@ -12,7 +12,6 @@ function App() {
         <div className="App">
             <Input />
             <br />
-            <br />
             <Button />
             {/* <Reducer />
             <State /> */}
