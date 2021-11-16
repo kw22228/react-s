@@ -1,6 +1,7 @@
 import './App.css';
-import Button from './components/HOC/Button';
-import Input from './components/HOC/Input';
+import Memo from './components/Memoization/Memo';
+// import Button from './components/HOC/Button';
+// import Input from './components/HOC/Input';
 // import ThankyouDialog from './components/Composition2/ThankyouDialog';
 // import State from './components/Hooks/State';
 // import Reducer from './components/Hooks/Reducer';
@@ -10,9 +11,10 @@ import Input from './components/HOC/Input';
 function App() {
     return (
         <div className="App">
-            <Input />
+            <Memo />
+            {/* <Input />
             <br />
-            <Button />
+            <Button /> */}
             {/* <Reducer />
             <State /> */}
             {/* <WelcomeDialog /> */}
