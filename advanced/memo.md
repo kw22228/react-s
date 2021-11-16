@@ -52,3 +52,46 @@ export default function withLoading(Component) {
 const Button = () => <button>Click</button>;
 export default withLoading(Button);
 ```
+
+---
+
+### Memoization(최적화)
+
+-   메모이제이션은 컴퓨터 프로그램이 동일한 계산을 반복해야 할 때, 이전에 계산한 값을 메모리에 저장함으로써 동일한 계산의 반복 수행을 제거하여 프로그램 실행 속도를 빠르게 하는것. (캐시같은 느낌.)
+
+#### Profiler API
+
+-   리액트에 내장되어있는 API. 어플리케이션이 렌더링하는 것을 측정함.(REACT 공식문서 Profiler API 참고)
+
+#### React.memo
+
+-   컴포넌트의 props를 비교하여 Memoization함. (props가 변경되지 않았다면 메모리에 저장된 컴포넌트를 그대로씀.)
+-   HOC 구조
+-   export default memo(CommentItem);
+
+#### useMemo
+
+-   계산을 통해 만들어진 특정한 값을 Memoization하는 것
+
+```javascript
+const rate = useMemo(() => {
+    //handleClick 이벤트가 일어날때 컴포넌트가 재랜더링 되면서 rate check까지 같이됨.
+    //이때 useMemo 해준다.
+    console.log('rate check');
+    return props.likes > 10 ? 'Good' : 'Bad';
+}, [props.likes]);
+```
+
+#### useCallback
+
+-   특정한 함수(이벤트)를 Memoization 하는 것
+-   주입되거나 전달 될때(props로 자식컴포넌트로 넘겼을때) Memoization
+
+```javascript
+const handleChange = useCallback(() => {
+    //function memoization
+    console.log('눌림');
+}, []);
+```
+
+---
