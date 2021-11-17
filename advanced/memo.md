@@ -161,3 +161,26 @@ const Portal = props => {
     <ThankyouDialog />
 </Portal>;
 ```
+
+---
+
+### Render props
+
+-   props로 함수를 전달해줌.
+-   props.render()로 인자를 전달 할 수 있다.
+
+```javascript
+<div>
+    {this.props.render(this.state)}
+</div>
+
+//꼭 render라고 지정할 필요 x
+<Mouse render={mouse => ( //mouse가 this.state를 받음.
+    <Component {...this.props} mouse={mouse} />
+)}/>
+```
+
+### Pure Component
+
+-   props와 state가 변할 때, true, false를 반환해서 리렌더링 할지 말지 정의함.
+-   하지만 Pure Component에 함수를 props로 보내게 될 시 계속적인 변화로 인지하여 성능 최적화에 의미가 없어진다.
