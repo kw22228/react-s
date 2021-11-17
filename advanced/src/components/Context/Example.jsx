@@ -31,6 +31,7 @@ export default class Example extends Component {
                         )}
                     </ThemeContext.Consumer>
                 </ThemeContext.Provider>
+
                 <ThemedButton />
             </div>
         );
