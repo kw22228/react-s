@@ -1,5 +1,6 @@
 import './App.css';
-import Memo from './components/Memoization/Memo';
+import Example from './components/Context/Example';
+// import Memo from './components/Memoization/Memo';
 // import Button from './components/HOC/Button';
 // import Input from './components/HOC/Input';
 // import ThankyouDialog from './components/Composition2/ThankyouDialog';
@@ -11,7 +12,8 @@ import Memo from './components/Memoization/Memo';
 function App() {
     return (
         <div className="App">
-            <Memo />
+            <Example />
+            {/* <Memo /> */}
             {/* <Input />
             <br />
             <Button /> */}
