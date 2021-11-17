@@ -95,3 +95,51 @@ const handleChange = useCallback(() => {
 ```
 
 ---
+
+### Contetxt API
+
+-   자식 컴포넌트로 Props drilling하는걸 해결
+
+#### createContext
+
+-   props를 저장하기위한 Context객체를 만듬
+
+```javascript
+export const ThemeContext = React.createContext(themes.dark);
+```
+
+#### Context.Provider
+
+-   Context를 사용하는 컴포넌트에서 context의 변화를 시킴.
+
+```javascript
+<ThemeContext.Provider value={this.state.theme}></ThemeContext.Provider>
+```
+
+#### contextType
+
+-   class내에서 this.context로 해당 context를 가져올수 있음.
+
+```javascript
+ThemedButton.contextType = ThemeContext;
+
+let theme = this.context;
+```
+
+#### context.Consumer
+
+-   함수 컴포넌트 안에서 context를 사용함
+
+```javascript
+<ThemeContext.Consumer>
+    {theme => (
+        <div
+            style={{
+                height: 300,
+                width: '100%',
+                backgroundColor: theme.background,
+            }}
+        />
+    )}
+</ThemeContext.Consumer>
+```
