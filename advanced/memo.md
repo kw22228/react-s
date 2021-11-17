@@ -143,3 +143,21 @@ let theme = this.context;
     )}
 </ThemeContext.Consumer>
 ```
+
+---
+
+### Portal
+
+-   DOM트리로부터 벗어나서 다른 DOM트리에 컴포넌트를 삽입.
+-   createPortal로 다른 DOM트리에 render시킬 수 있음.
+-   다른 DOM트리에 있지만 이벤트 버블링이 일어남.
+
+```javascript
+const Portal = props => {
+    return createPortal(props.children, document.getElementById('portal'));
+};
+
+<Portal>
+    <ThankyouDialog />
+</Portal>;
+```
