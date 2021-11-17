@@ -1,5 +1,5 @@
 import './App.css';
-import Example from './components/Context/Example';
+import Example from './components/Portal/Example';
 // import Memo from './components/Memoization/Memo';
 // import Button from './components/HOC/Button';
 // import Input from './components/HOC/Input';
