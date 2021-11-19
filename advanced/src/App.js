@@ -1,5 +1,6 @@
 import './App.css';
-import Example from './components/Portal/Example';
+import Component from './components/PropTypes/Component';
+// import Example from './components/Portal/Example';
 // import Memo from './components/Memoization/Memo';
 // import Button from './components/HOC/Button';
 // import Input from './components/HOC/Input';
@@ -12,7 +13,8 @@ import Example from './components/Portal/Example';
 function App() {
     return (
         <div className="App">
-            <Example />
+            <Component />
+            {/* <Example /> */}
             {/* <Memo /> */}
             {/* <Input />
             <br />
