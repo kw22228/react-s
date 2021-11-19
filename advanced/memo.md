@@ -184,3 +184,13 @@ const Portal = props => {
 
 -   props와 state가 변할 때, true, false를 반환해서 리렌더링 할지 말지 정의함.
 -   하지만 Pure Component에 함수를 props로 보내게 될 시 계속적인 변화로 인지하여 성능 최적화에 의미가 없어진다.
+
+---
+
+### PropTypes
+
+-   Props의 타입을 확인하기 위한 도구(Flow, TypeScript 같은 정적 타이핑 도구)
+-   개발모드에서만 동작한다.
+-   RegExp(정규식)등으로 custom할 수 있다.
+-   Props의 Children 갯수 제약을 할 수 있다.
+    (자세한 내용은 React 공식문서 PropTypes)
