@@ -194,3 +194,20 @@ const Portal = props => {
 -   RegExp(정규식)등으로 custom할 수 있다.
 -   Props의 Children 갯수 제약을 할 수 있다.
     (자세한 내용은 React 공식문서 PropTypes)
+
+---
+
+### Reconciliation(재조정)
+
+-   서로 다른 타입의 두 엘리먼트는 다른 트리를 만듬(타입 다르면 트리를 파괴하고 다시 새로그림)
+-   key prop을 통해 어떤 엘리먼트가 변경되지 않아야 될지 표시
+-   루트부터 아래 순으로 비교 알고리즘을 돌림.
+
+#### Virtual DOM
+
+-   가상의 표현(Virtual DOM)을 메모리에 저장하고 실제 DOM(Real DOM)과 동기화 하는 과정 === 재조정
+-   React Fiber => 기존의 스택 reconciler라는 재조정 엔진을 대체한 엔진이다.
+
+#### Design Principles
+
+-   개발 철학. (React docs 들어가서 한번쯤 봐보자)
