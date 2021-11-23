@@ -19,8 +19,10 @@ extension -> "react es7" 검색 -> react snippet 다운(react functional composi
 
 ### Rainbow Brackets
 
----
-
-## React Developer Tools(Chrome extension)
+### React Developer Tools(Chrome extension)
 
 -   성능 체크(Profiler) 및 Component의 구성요소를 볼 수 있다.
+
+### Import cost
+
+-   import한 패키지의 사이즈 체크
