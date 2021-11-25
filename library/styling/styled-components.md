@@ -38,3 +38,41 @@ const TomatoButton = styled(Button)`
     border-color: tomato;
 `;
 ```
+
+### 기능
+
+1. pseudoselectors (가상 셀렉터) : & 로 표기 (this같은 느낌, 컴포넌트 자신)
+
+2. attrs 로 style을 넘어선 attribute 수정가능.
+
+```javascript
+const PasswordInput = styled(Input).attrs({
+    type: 'password',
+})`
+    border: 2px solid aqua;
+`;
+```
+
+3. Global Style을 줄 수 있다.
+
+```javascript
+const GlobalStyle = createGlobalStyle`
+  button{
+      background-color: pink;
+  }
+`;
+
+//Green 버튼과 Other버튼 둘다 GlobalStyle이 먹음.
+<>
+    <div>
+        <GlobalStyle />
+        <button onClick={() => setTheme(greenTheme)}>Green</button>
+    </div>
+    <div>
+        <button>Other</button>
+    </div>
+</>;
+```
+
+4. Animation - keyframes
+5. ThemeProvider
