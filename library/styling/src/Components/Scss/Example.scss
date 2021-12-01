@@ -104,3 +104,87 @@ nav {
 .circle-av {
     @include avatar(100px, $circle: true);
 }
+
+//function
+@function pow($base, $exponent) {
+    $result: 1;
+    @for $_ from 1 through $exponent {
+        $result: $result * $base;
+    }
+    @return $result;
+}
+
+.sidebar {
+    float: left;
+    margin-left: pow(4, 3) * 1px;
+}
+
+//error
+@mixin reflexive-position($property, $value) {
+    @if $property != left and $property != right {
+        @error "Property #{$property} must be either left or right.";
+    }
+
+    $left-value: if($property == right, initial, $value);
+    $right-value: if($property == right, $value, initial);
+
+    left: $left-value;
+    right: $right-value;
+    [dir='rtl'] & {
+        left: $right-value;
+        right: $left-value;
+    }
+}
+
+.sidebar {
+    @include reflexive-position(right, 12px);
+    //       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    // Error: Property top must be either left or right.
+}
+
+// Interpolation
+@mixin prefix($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+        -#{$prefix}-#{$property}: $value;
+    }
+    #{$property}: $value;
+}
+
+.gray {
+    @include prefix(filter, grayscale(50%), moz webkit o ms);
+}
+
+@mixin prefix2($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+        #{$property}: -#{$prefix}-#{$value};
+    }
+    #{$property}: $value;
+}
+
+.button {
+    @include prefix2(background, linear-gradient(red, yellow), moz webkit o ms);
+}
+
+//interpolation 2
+@mixin inline-animation($duration) {
+    $name: inline-#{unique-id()};
+
+    @keyframes #{$name} {
+        @content;
+    }
+
+    animation-name: $name;
+    animation-duration: $duration;
+    animation-iteration-count: infinite;
+}
+
+.pulse {
+    @include inline-animation(2s) {
+        from {
+            background-color: yellow;
+        }
+        to {
+            background-color: red;
+        }
+    }
+}

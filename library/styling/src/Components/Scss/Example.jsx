@@ -31,6 +31,11 @@ export default function Example() {
             <hr />
             <div className="square-av"></div>
             <div className="circle-av"></div>
+            <hr />
+            <div className="sidebar"></div>
+            <div className="gray">Gray</div>
+            <div className="button">Gray</div>
+            <div className="pulse">Gray</div>
         </>
     );
 }
