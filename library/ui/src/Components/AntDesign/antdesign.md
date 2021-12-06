@@ -5,4 +5,4 @@
 ### Install
 
 1. npm start antd
-2. import 'antd/dist/antd.css'
+2. @import '~antd/dist/antd.css'; (App.css)
