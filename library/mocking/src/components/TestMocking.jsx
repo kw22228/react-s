@@ -21,10 +21,13 @@ export default function TestMocking() {
                 return res.json();
             })
             .then(json => {
+                if (json.errorMessage) {
+                    throw new Error(json.errorMessage);
+                }
                 setData(json.data);
             })
             .catch(error => {
-                setError(error);
+                setError(`Somthing Wrong: ${error}`);
             });
     };
     const handleClick2 = () => {
