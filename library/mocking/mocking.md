@@ -19,6 +19,18 @@
 
 -   npx msw init public/ 해주면 public폴더에 mockServiceWorker.js파일이 만들어짐
 
+### initail
+
+-   index.js에 코드 삽입
+
+```javascript
+//mocking start
+if (process.env.NODE_ENV === 'development') {
+    const { worker } = require('./mocks/browser');
+    worker.start();
+}
+```
+
 ### etc (query, patching, error)
 
 -   query : queryParams를 받아서 사용할 수 있다.(const id = req.url.searchParams.get('id');)
