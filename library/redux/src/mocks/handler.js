@@ -1,6 +1,26 @@
 import { rest } from 'msw';
 
 export const handler = [
+    rest.put(
+        'http://localhost:3000/counter/increment',
+        async (req, res, ctx) => {
+            const { value } = req.body;
+            return res(
+                ctx.json({
+                    value: value + 2,
+                })
+            );
+        }
+    ),
+    rest.get('/login', async (req, res, ctx) => {
+        return res(
+            ctx.json({
+                id: 'ffffffffff',
+                firstName: 'jaewon',
+                lastName: 'Kim',
+            })
+        );
+    }),
     rest.get('/login', async (req, res, ctx) => {
         return res(
             ctx.json({
