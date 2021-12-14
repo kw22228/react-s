@@ -1,4 +1,4 @@
-import { action } from 'mobx';
+import { action, runInAction } from 'mobx';
 import { observer } from 'mobx-react';
 import { observableTodoStore } from '../app/ObservableTodoStore';
 
@@ -37,16 +37,20 @@ const TodoList = observer(({ store }) => {
     };
 
     const load = () => {
-        action(() => {
-            observableTodoStore.pendingRequests++;
-        })();
+        runInAction(() => {
+            store.pendingRequests++;
+        });
         setTimeout(
             action(() => {
-                observableTodoStore.addTodo('Random Todo ' + Math.random());
-                observableTodoStore.pendingRequests--;
+                store.addTodo('Random Todo ' + Math.random());
+                store.pendingRequests--;
             }),
             2000
         );
+    };
+
+    const fetchTodo = () => {
+        store.fetchData();
     };
     return (
         <div>
@@ -62,6 +66,7 @@ const TodoList = observer(({ store }) => {
 
             <button onClick={run}>run code</button>
             <button onClick={load}>load data</button>
+            <button onClick={fetchTodo}>fetch data</button>
         </div>
     );
 });
