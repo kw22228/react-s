@@ -1,6 +1,15 @@
 import { rest } from 'msw';
 
 export const handler = [
+    rest.get('/todo', async (req, res, ctx) => {
+        return res(
+            ctx.json({
+                todo: {
+                    task: 'Todo from Server',
+                },
+            })
+        );
+    }),
     rest.put(
         'http://localhost:3000/counter/increment',
         async (req, res, ctx) => {
