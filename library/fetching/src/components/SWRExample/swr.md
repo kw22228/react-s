@@ -23,7 +23,7 @@
 -   revalidateOnReconnect
 -   useSWRImmutable
 
-### SWRConfig
+### SWRConfig(전역 설정)
 
 -   캐싱된 데이터를 확인할 수 있다.
 -   useSWR에 option들을 전역으로 설정 가능.
