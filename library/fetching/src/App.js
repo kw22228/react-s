@@ -1,10 +1,15 @@
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import './App.css';
-import Pagenation from './components/SWRExample/Pagenation';
+import Example from './components/ReactQuery/Example';
+import QuickStart from './components/ReactQuery/QuickStart';
+// import Pagenation from './components/SWRExample/Pagenation';
 // import Mutate from './components/SWRExample/Mutate';
 // import Cache from './components/SWRExample/Cache';
 // import Fetcher from './components/SWRExample/Fetcher';
 // import Profile from './components/SWRExample/Profile';
 
+const queryClient = new QueryClient();
 function App() {
     return (
         <div className="App">
@@ -12,7 +17,12 @@ function App() {
             <Cache /> */}
             {/* <Fetcher /> */}
             {/* <Mutate /> */}
-            <Pagenation />
+            {/* <Pagenation /> */}
+            <QueryClientProvider client={queryClient}>
+                {/* <Example /> */}
+                <QuickStart />
+                <ReactQueryDevtools />
+            </QueryClientProvider>
         </div>
     );
 }
