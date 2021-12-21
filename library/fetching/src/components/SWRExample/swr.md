@@ -31,6 +31,6 @@
 ### Cache
 
 -   Cache Provider
--   mutate
+-   mutate -> 실제 데이터를 update하기전에 미리 사용자의 UI에 데이터를 보여줌.
 -   cache
 -   Persistant Cache
