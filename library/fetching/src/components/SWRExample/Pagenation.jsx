@@ -1,12 +1,11 @@
 import React from 'react';
-import Fetcher from './Fetcher';
 import useSWRInfinite from 'swr/infinite';
 import axios from 'axios';
 
 const fetcher = url => axios.get(url).then(res => res.data);
 const getKey = (pageIndex, previousPageData) => {
     if (previousPageData && !previousPageData.length) return null;
-    return `/api/users?page=${pageIndex}&limit=10`;
+    return `/api/users?page=${pageIndex}&limit=5`;
 };
 
 export default function Pagenation() {
@@ -22,6 +21,7 @@ export default function Pagenation() {
         <div>
             <p>{totalUsers} users listed</p>
             {data.map((users, index) => {
+                console.log(users);
                 return users.map(users => (
                     <div key={users.id}>{users.name}</div>
                 ));
