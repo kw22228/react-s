@@ -24,6 +24,37 @@ const todos = [
 ];
 
 export const handler = [
+    rest.get('http://localhost:3000/api/projects', async (req, res, ctx) => {
+        const pageIndex = req.url.searchParams.get('page');
+        return res(
+            ctx.json({
+                projects: [
+                    {
+                        id: `1 ${pageIndex}`,
+                        name: `jaewon 1-${pageIndex}`,
+                    },
+                    {
+                        id: `2 ${pageIndex}`,
+                        name: `jaewon 2-${pageIndex}`,
+                    },
+                    {
+                        id: `3 ${pageIndex}`,
+                        name: `jaewon 3-${pageIndex}`,
+                    },
+                    {
+                        id: `4 ${pageIndex}`,
+                        name: `jaewon 4-${pageIndex}`,
+                    },
+                    {
+                        id: `5 ${pageIndex}`,
+                        name: `jaewon 5-${pageIndex}`,
+                    },
+                ],
+                hasMore: pageIndex < 9,
+            })
+        );
+        // return res(ctx.status(400));
+    }),
     rest.post('http://localhost:3000/api/todo', async (req, res, ctx) => {
         const { todo } = req.body;
         todos.push(todo);
