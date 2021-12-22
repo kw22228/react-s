@@ -1,5 +1,6 @@
 import React from 'react';
 import { useMutation, useQuery, useQueryClient } from 'react-query';
+import GlobalLoader from './GlobalLoader';
 import { getTodos, postTodo } from './my-api';
 
 export default function QuickStart() {
@@ -22,6 +23,8 @@ export default function QuickStart() {
 
     return (
         <div>
+            {/* {query.isFetching && <div>Refresh...</div>} */}
+            <GlobalLoader />
             <ul>
                 {query.data.map(todo => {
                     return <li key={todo.id}>{todo.title}</li>;
