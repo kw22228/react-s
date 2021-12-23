@@ -1,10 +1,13 @@
+import axios from 'axios';
 import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 
 export default function InfiniteScroll() {
-    const fetchProjects = ({ pageParam = 0 }) =>
-        fetch('/api/projects?cursor=' + pageParam);
-
+    const fetchProjects = ({ pageParam = 0 }) => {
+        return axios
+            .get('/api/projects?page=' + pageParam)
+            .then(res => res.data);
+    };
     const {
         data,
         error,
@@ -14,7 +17,9 @@ export default function InfiniteScroll() {
         isFetchingNextPage,
         status,
     } = useInfiniteQuery('projects', fetchProjects, {
-        getNextPageParam: (lastPage, pages) => lastPage.nextCursor,
+        getNextPageParam: (lastPage, pages) => {
+            return lastPage.nextCursor;
+        },
     });
 
     return status === 'loading' ? (
