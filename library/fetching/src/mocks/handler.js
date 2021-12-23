@@ -51,6 +51,7 @@ export const handler = [
                     },
                 ],
                 hasMore: pageIndex < 9,
+                nextCursor: pageIndex < 4 ? parseInt(pageIndex) + 1 : undefined,
             })
         );
         // return res(ctx.status(400));
