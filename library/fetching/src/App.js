@@ -1,7 +1,8 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import './App.css';
-import Pagination from './components/ReactQuery/Pagination';
+import InfiniteScroll from './components/ReactQuery/InfiniteScroll';
+// import Pagination from './components/ReactQuery/Pagination';
 // import Example from './components/ReactQuery/Example';
 // import QuickStart from './components/ReactQuery/QuickStart';
 // import Pagenation from './components/SWRExample/Pagenation';
@@ -22,7 +23,8 @@ function App() {
             <QueryClientProvider client={queryClient}>
                 {/* <Example /> */}
                 {/* <QuickStart /> */}
-                <Pagination />
+                {/* <Pagination /> */}
+                <InfiniteScroll />
                 <ReactQueryDevtools />
             </QueryClientProvider>
         </div>

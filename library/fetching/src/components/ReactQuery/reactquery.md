@@ -81,3 +81,20 @@ const useQueries = useQueries(
 ### Infinite Queries
 
 -   무한 스크롤 할때 사용.
+-   getNextPageParam으로 pages데이터와 lastPage데이터를 return 받는다.
+    (getNextPage의 값이 undefined일때, hasNextPage는 false)
+
+### Placeholder / initial
+
+-   data에 기본값을 set할때 사용.
+-   placeholder는 real한 값이 아니고 observer 기반, initial은 cache data 기반이다.
+
+### Prefetching
+
+-   cache가 이미 있고, 유요하다면 fetch하지 않음.
+-   Staletime이 지났다면 fetch한다.
+-   useQuery가 수행되지 않으면, cacheTime 만료후 가비지컬렉터로 제거된다.
+
+### Mutation
+
+-   create, update, delete와 같이 서버에있는 데이터를 바꾸는 역할을 할때 사용.
