@@ -27,6 +27,7 @@
 -   npm run build 될때 호출.
 -   data의 경우 build된 파일안에 data를 저장해놓는다.
 -   fetching하는 페이지가 변하지 않는다면 굉장히 효율적.
+-   pages/ 에서만 사용할 수 있다.
 
 ### getServerSideProps
 
@@ -73,3 +74,9 @@ import cn from 'classnames'
     })}
 >
 ```
+
+---
+
+### Hydration
+
+-   브라우저에서 html DOM과 CSSOM을 만든후 Javascript엔진이 돌아가면서 페이지가 인터렉티브하게 동작할 상태가 되는 과정
