@@ -46,6 +46,30 @@ export async function getServerSideProps(context) {
 
 ---
 
-### 기능
+### 제공 Components
 
 1. <Link href="/posts/first-post"></Link> => Code splitting and prefetching
+2. <Image/> => Resizing & optimizing images (public에 image를 담아준다)
+3. <Head> => MetaData <haed>
+
+### pages/\_app.js
+
+-   모든 파일의 공통적인 부분을 채울때 사용.
+-   global 파일이다.
+
+### Styling
+
+-   css modules, styled-jsx, sass등 nextjs 안에서 제공하고있다.
+-   global css적용은 only pages/\_app.js 에 styles/global.css를 import 해서 사용 수 있다.
+-   css modules는 xxxx.module.css로 만들어야함
+-   classnames library (css를 조건을 줘서 사용가능)
+
+```javascript
+import cn from 'classnames'
+<div
+    className={cn({
+        [styles.success]: type === 'success',
+        [styles.error]: type === 'error'
+    })}
+>
+```
