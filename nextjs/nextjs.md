@@ -80,3 +80,43 @@ import cn from 'classnames'
 ### Hydration
 
 -   브라우저에서 html DOM과 CSSOM을 만든후 Javascript엔진이 돌아가면서 페이지가 인터렉티브하게 동작할 상태가 되는 과정
+
+### Dynamic routing
+
+-   getStaticPaths을 통해 id를 통한 페이지를 만든다.
+    ([id].js 로 만듬, [...id].js)
+
+```javascript
+export async function getStaticPaths() {
+    const paths = getAllPostIds();
+
+    return {
+        // paths: [{ params: { id: 'ssg-ssr' } }], // /posts/ssg-ssr
+        paths,
+        fallback: true,
+    };
+}
+```
+
+### Fallback
+
+-   fallback이 false일 시, 404페이지 나옴
+-   fallback을 true로 설정할 시 해당 id값을 가지고 getStaticProps로 들어간다.
+
+```javascript
+const router = useRouter();
+if(router.isFallback)
+```
+
+### API routes
+
+-   /pages/api/hello.js에 가상의 api를 만들어서 사용가능(데이터 모킹느낌)
+
+```javascript
+export default function handler(req, res) {
+    res.status(200).json({
+        id: 'kjw204',
+        text: 'Hello',
+    });
+}
+```
