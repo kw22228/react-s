@@ -6,17 +6,28 @@ import Layout from '../../components/layout';
 import { getPostData } from '../../lib/posts';
 import utilStyles from '../../styles/utils.module.css';
 
-export async function getStaticPaths() {
-    // const paths = getAllPostIds();
+// export async function getStaticPaths() {
+//     // const paths = getAllPostIds();
 
-    return {
-        paths: [{ params: { id: 'ssg-ssr' } }],
-        // paths,
-        fallback: true,
-    };
-}
+//     return {
+//         paths: [{ params: { id: 'ssg-ssr' } }],
+//         // paths,
+//         fallback: 'blocking',
+//     };
+// }
 
-export async function getStaticProps({ params }) {
+// export async function getStaticProps({ params }) {
+//     const postData = await getPostData(params.id);
+
+//     return {
+//         props: {
+//             postData,
+//         },
+//     };
+// }
+
+export async function getServerSideProps({ params, req }) {
+    console.log(`req.coockies: ${JSON.stringify(req.cookies)}`);
     const postData = await getPostData(params.id);
 
     return {
@@ -34,7 +45,7 @@ export default function Post({ postData }) {
             const res = await fetch('/api/hello');
             const data = await res.json();
 
-            console.log(data);
+            // console.log(data);
         };
 
         getText();
