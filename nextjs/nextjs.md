@@ -1,6 +1,8 @@
 # Next.js
 
 -   SSR 특화.
+-   프레임워크
+-   API가 꽤나 많음
 
 ---
 
@@ -29,9 +31,15 @@
 -   fetching하는 페이지가 변하지 않는다면 굉장히 효율적.
 -   pages/ 에서만 사용할 수 있다.
 
+받는 인자값 : params, preview, previewData, locale, locales, defaultLocale
+return 해주는값 : props, revalidate, notFound
+
 ### getServerSideProps
 
 -   페이지가 리로드 될때마다 호출한다.
+
+받는 인자값 : params, req, res, query, preview, previewData, locale, locales, defaultLocale
+return 해주는값 : props, notFound
 
 ```javascript
 export async function getServerSideProps(context) {
@@ -102,6 +110,7 @@ export async function getStaticPaths() {
 
 -   fallback이 false일 시, 404페이지 나옴
 -   fallback을 true로 설정할 시 해당 id값을 가지고 getStaticProps로 들어간다.
+-   fallback을 'blocking' 할 시 잠시 멈췄다가 해당 id값을 가지고 실행됨.
 
 ```javascript
 const router = useRouter();
@@ -120,3 +129,8 @@ export default function handler(req, res) {
     });
 }
 ```
+
+### Layouts
+
+-   여러 페이지에서 공통된 Layout을 사용할 때 사용.(ex: navigation)
+-   페이지 특정 Layout도 사용가능(Page.getLayout)
