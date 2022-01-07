@@ -6,28 +6,17 @@ import Layout from '../../components/layout';
 import { getPostData } from '../../lib/posts';
 import utilStyles from '../../styles/utils.module.css';
 
-// export async function getStaticPaths() {
-//     // const paths = getAllPostIds();
+export async function getStaticPaths() {
+    // const paths = getAllPostIds();
 
-//     return {
-//         paths: [{ params: { id: 'ssg-ssr' } }],
-//         // paths,
-//         fallback: 'blocking',
-//     };
-// }
+    return {
+        paths: [{ params: { id: 'ssg-ssr' } }],
+        // paths,
+        fallback: false,
+    };
+}
 
-// export async function getStaticProps({ params }) {
-//     const postData = await getPostData(params.id);
-
-//     return {
-//         props: {
-//             postData,
-//         },
-//     };
-// }
-
-export async function getServerSideProps({ params, req }) {
-    console.log(`req.coockies: ${JSON.stringify(req.cookies)}`);
+export async function getStaticProps({ params }) {
     const postData = await getPostData(params.id);
 
     return {
@@ -36,6 +25,17 @@ export async function getServerSideProps({ params, req }) {
         },
     };
 }
+
+// export async function getServerSideProps({ params, req }) {
+//     console.log(`req.coockies: ${JSON.stringify(req.cookies)}`);
+//     const postData = await getPostData(params.id);
+
+//     return {
+//         props: {
+//             postData,
+//         },
+//     };
+// }
 
 export default function Post({ postData }) {
     const router = useRouter(); //fallback check
