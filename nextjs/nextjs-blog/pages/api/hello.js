@@ -1,6 +1,8 @@
 export default function handler(req, res) {
-    res.status(200).json({
-        id: 'kjw204',
-        text: 'Hello',
-    });
+    console.log('/api/hello');
+    // res.status(200).json({
+    //     id: 'kjw204',
+    //     text: 'Hello',
+    // });
+    res.redirect(307, '/api/bye');
 }
