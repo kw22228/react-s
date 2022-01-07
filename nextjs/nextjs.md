@@ -93,6 +93,10 @@ import cn from 'classnames'
 
 -   getStaticPaths을 통해 id를 통한 페이지를 만든다.
     ([id].js 로 만듬, [...id].js)
+-   [[...id]].js -> ...id의 값이 비었다면 포함x
+-   router.query 로 key와 value를 꺼낼 수 있다.
+-   (주의사항) page matching은 정적인 페이지부터 된다.
+-   (주의사항) router.query는 처음엔 빈객체로 들어오고 hydration된 후에 채워진다.
 
 ```javascript
 export async function getStaticPaths() {
@@ -114,7 +118,13 @@ export async function getStaticPaths() {
 
 ```javascript
 const router = useRouter();
-if(router.isFallback)
+if (router.isFallback) {
+}
+
+//<Link href="/about"></Link>와 동일
+<button type="button" onClick={() => router.push('/about')}>
+    Click Me
+</button>;
 ```
 
 ### API routes
