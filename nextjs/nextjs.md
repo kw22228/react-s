@@ -159,3 +159,8 @@ export default function handler(req, res) {
 -   vercel을 통한 배포(git repository)
 -   git에 PR을 올리면 Vercel이 알아서 preview를 만들어줌
 -   Merge를 하면 알아서 재배포도 해준다.
+
+### Testing
+
+-   cypress, jest 등을 이용해서 테스팅.
+-   integration에 원하는 테스팅을 만든후 실행
