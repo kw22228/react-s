@@ -144,3 +144,18 @@ export default function handler(req, res) {
 
 -   여러 페이지에서 공통된 Layout을 사용할 때 사용.(ex: navigation)
 -   페이지 특정 Layout도 사용가능(Page.getLayout)
+
+---
+
+### Production
+
+1. caching
+2. JS code 최소화 / js bundle 로드 타이밍 최적화
+3. 로깅 / 오류처리 / 404, 500 페이지 커스텀
+4. Lighthouse로 성능 측정 / 지원 브라우저 및 기능 검토 (webpack analyzer)
+
+### Deployment
+
+-   vercel을 통한 배포(git repository)
+-   git에 PR을 올리면 Vercel이 알아서 preview를 만들어줌
+-   Merge를 하면 알아서 재배포도 해준다.
