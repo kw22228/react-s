@@ -162,5 +162,48 @@ export default function handler(req, res) {
 
 ### Testing
 
--   cypress, jest 등을 이용해서 테스팅.
+-   cypress(E2E test), jest(Unit test) 등을 이용해서 테스팅.
 -   integration에 원하는 테스팅을 만든후 실행
+
+---
+
+### Preview
+
+-   res.setPreviewData({});
+-   token으로 보안 강화
+-   매개변수를 통해 원하는 데이터를 가져와 getStaticProps에 전달 가능
+-   context.preview / context.preivewData
+
+### Dynamic Import
+
+-   js file 또는 react components를 dynamic하게 import 가능
+-   options : loading, ssr, suspense
+
+### jsconfig.json
+
+-   모듈의 경로의 alias 설정 가능.
+
+### AMP
+
+-   next에서 amp를 지원하고있음.
+-   (주의사항)amp 컴포넌트는 inline으로 css를 적용해야한다.
+-   amp tag가 따로있음. ex) <amp-timeage></amp-timeago>
+-   export const config = {amp : true} 로 amp페이지 hybrid가능
+-   script는 무조건 비동기로 진행한다.
+
+### Customizing Target Browser list
+
+-   package.json 에서 browser target을 적어줌
+    ex) "browserslist": [">0.3%", "not ie 11", "not dead", "not op_mini all"]
+-   .browserslistrc 파일을 만들어서 set 할 수 도있다.
+
+### src Directory
+
+-   /pages 디렉토리 -> /src/pages 로 변경가능 (그밖에 components, lib, styles 도 넣음)
+-   (주의사항) /public 디렉토리는 반드시 root에 있어야함
+
+---
+
+### Debugging
+
+-   /.vscode/launch.json
