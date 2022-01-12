@@ -207,3 +207,7 @@ export default function handler(req, res) {
 ### Debugging
 
 -   /.vscode/launch.json
+
+### next.config.js
+
+-   여러가지 설정을 할 수 있음. (nextjs docs)
