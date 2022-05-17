@@ -34,6 +34,29 @@ export const useTabs = (initialTab, allTabs) => {
     };
 };
 
+export const useNetwork = onChange => {
+    const [status, setStatus] = useState(navigator.onLine);
+
+    const handleChange = () => {
+        if (typeof onChange === 'function') {
+            onChange(navigator.onLine);
+        }
+        setStatus(navigator.onLine);
+    };
+
+    useEffect(() => {
+        window.addEventListener('online', handleChange);
+        window.addEventListener('offline', handleChange);
+
+        return () => {
+            window.removeEventListener('online', handleChange);
+            window.removeEventListener('offline', handleChange);
+        };
+    }, []);
+
+    return status;
+};
+
 /////////////////////////////////  useEffect //////////////////////////////
 export const useTitle = initialTitle => {
     const [title, setTitle] = useState(initialTitle);
@@ -65,5 +88,77 @@ export const useClick = (onClick, title) => {
         };
     }, []);
 
+    if (typeof onClick !== 'function') {
+        return false;
+    }
+
     return element;
+};
+
+export const useConfirm = (message, onConfirm, onCancel) => {
+    if (onConfirm && typeof onConfirm !== 'function') return;
+    if (onCancel && typeof onCancel !== 'function') return;
+
+    const confirmAction = () => {
+        if (window.confirm(message)) {
+            onConfirm();
+        } else {
+            onCancel();
+        }
+    };
+
+    return confirmAction;
+};
+
+export const usePreventLeave = () => {
+    const listener = e => {
+        e.preventDefault();
+        e.returnValue = '';
+    };
+    const enablePrevent = () => {
+        window.addEventListener('beforeunload', listener);
+    };
+    const disablePrevent = () => {
+        window.removeEventListener('beforeunload', listener);
+    };
+
+    return { enablePrevent, disablePrevent };
+};
+
+export const useBeforeLeave = onBefore => {
+    const mouseLeaveHanler = () => {
+        onBefore();
+    };
+
+    useEffect(() => {
+        document.addEventListener('mouseleave', mouseLeaveHanler);
+
+        return document.removeEventListener('mouseleave', mouseLeaveHanler);
+    }, []);
+
+    if (typeof onBefore !== 'function') return;
+};
+
+export const useFadeIn = (duration = 3, delay = 0) => {
+    const element = useRef();
+
+    useEffect(() => {
+        if (element.current) {
+            const { current } = element;
+
+            //style
+            current.style.transition = `opacity ${duration}s ease-in-out ${delay}s`;
+            current.style.opacity = 1;
+        }
+    }, []);
+
+    if (typeof duration !== 'number') {
+        return;
+    }
+    return {
+        ref: element,
+        style: {
+            opacity: 0,
+        },
+    };
 };

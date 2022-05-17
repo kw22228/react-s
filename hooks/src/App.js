@@ -1,4 +1,4 @@
-import { useClick } from './hooks/customHooks';
+import { useFadeIn, useNetwork } from './hooks/customHooks';
 // const content = [
 //     {
 //         tab: 'Section 1',
@@ -14,14 +14,19 @@ import { useClick } from './hooks/customHooks';
 // ];
 
 function App() {
-    const onClick = (element, title) => {
-        element.current.innerHTML = title;
-    };
-    const titleRef = useClick(onClick, 'Update');
+    const elemRef = useFadeIn(5, 5);
+    const elemRef2 = useFadeIn(10);
 
+    const handleNetworkChange = online => console.log(online ? 'Online!!' : 'Offline');
+    const status = useNetwork(handleNetworkChange);
     return (
         <div>
-            <h1 ref={titleRef}>Title</h1>
+            <h1 {...elemRef}>Use Fade In Out !!</h1>
+            <p {...elemRef2}>Fade In Out 2 !!</p>
+
+            <hr />
+
+            <h2>{status ? 'Online' : 'Offline'}</h2>
         </div>
     );
 }
