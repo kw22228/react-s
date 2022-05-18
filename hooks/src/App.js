@@ -63,6 +63,8 @@ function App() {
 
             <hr />
             <button onClick={triggerNotif}>useNotification</button>
+
+            <hr />
         </div>
     );
 }
