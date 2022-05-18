@@ -162,3 +162,64 @@ export const useFadeIn = (duration = 3, delay = 0) => {
         },
     };
 };
+
+export const useScroll = () => {
+    const [state, setState] = useState({
+        x: 0,
+        y: 0,
+    });
+
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            setState(prev => {
+                return {
+                    x: window.scrollX,
+                    y: window.scrollY,
+                };
+            });
+        });
+    }, []);
+
+    return state;
+};
+
+export const useFullscreen = callback => {
+    const element = useRef();
+
+    const triggerFullscreen = () => {
+        element.current.requestFullscreen();
+
+        if (callback && typeof callback === 'function') {
+            callback(true);
+        }
+    };
+
+    const exitFullscreen = () => {
+        document.exitFullscreen();
+
+        if (callback && typeof callback === 'function') {
+            callback(false);
+        }
+    };
+
+    return { element, triggerFullscreen, exitFullscreen };
+};
+
+export const useNotification = (title, options) => {
+    if (!('Notification' in window)) {
+        console.log('no');
+        return;
+    }
+
+    const fireNotif = () => {
+        if (Notification.permission !== 'granted') {
+            Notification.requestPermission().then(permission => {
+                console.log('Notification Permission denied');
+            });
+        } else {
+            new Notification(title, options);
+        }
+    };
+
+    return fireNotif;
+};
