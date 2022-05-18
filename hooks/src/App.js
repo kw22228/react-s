@@ -5,6 +5,7 @@ import {
     useFullscreen,
     useNotification,
 } from './hooks/customHooks';
+import useAxios from './hooks/useAxios';
 // const content = [
 //     {
 //         tab: 'Section 1',
@@ -41,6 +42,12 @@ function App() {
     const triggerNotif = useNotification('Hello', {
         body: 'hello there',
     });
+
+    //useAxios
+    const options = {
+        url: 'https://yts.mx/api/v2/list_movies.json',
+    };
+    const { loading, error, data, refetch } = useAxios(options);
     return (
         <div style={{ height: '1000vh' }}>
             <h1 {...elemRef}>Use Fade In Out !!</h1>
@@ -65,6 +72,8 @@ function App() {
             <button onClick={triggerNotif}>useNotification</button>
 
             <hr />
+            <h1>{loading ? 'Loading...' : 'Done.'}</h1>
+            <button onClick={refetch}>Refetch</button>
         </div>
     );
 }
