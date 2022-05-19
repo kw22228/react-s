@@ -4,6 +4,7 @@ import {
     useScroll,
     useFullscreen,
     useNotification,
+    useTitle,
 } from './hooks/customHooks';
 import useAxios from './hooks/useAxios';
 // const content = [
@@ -21,6 +22,12 @@ import useAxios from './hooks/useAxios';
 // ];
 
 function App() {
+    //useTitle
+    const titleUpdater = useTitle('Loading...');
+    setTimeout(() => {
+        titleUpdater('Update title!!');
+    }, 3000);
+
     //useFadeIn
     const elemRef = useFadeIn(5, 5);
     const elemRef2 = useFadeIn(10);
